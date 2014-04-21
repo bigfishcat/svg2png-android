@@ -9,7 +9,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE    := svg2png
 LOCAL_CFLAGS    := -O2 --std=c99 -I. -Ijni/pixman/pixman -Ijni/cairo/src -Ijni/cairo-extra -Ijni/pixman-extra -Ijni/libsvg -Ijni/libpng -Ijni/libsvg-cairo -Wno-missing-field-initializers
 LOCAL_LDLIBS    := -lm -llog -landroid
-LOCAL_SRC_FILES := svg2png.c
+LOCAL_SRC_FILES := svg2png.cpp
 LOCAL_STATIC_LIBRARIES := android_native_app_glue libcairo libpixman libexpat libsvg libsvg-cairo cpufeatures
 
 include $(BUILD_SHARED_LIBRARY)

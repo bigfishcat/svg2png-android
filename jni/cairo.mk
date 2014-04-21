@@ -11,7 +11,7 @@ LIBCAIRO_SRC = \
 	       cairo/src/cairo-botor-scan-converter.c        \
 	       cairo/src/cairo-boxes-intersect.c             \
 	       cairo/src/cairo-boxes.c                       \
-	       cairo/src/cairo.c                             \
+	       cairo/src/cairo.cpp                           \
 	       cairo/src/cairo-cache.c                       \
 	       cairo/src/cairo-cff-subset.c                  \
 	       cairo/src/cairo-clip-boxes.c                  \
@@ -58,7 +58,7 @@ LIBCAIRO_SRC = \
 	       cairo/src/cairo-paginated-surface.c           \
 	       cairo/src/cairo-path-bounds.c                 \
 	       cairo/src/cairo-path-fill.c                   \
-	       cairo/src/cairo-path-fixed.c                  \
+	       cairo/src/cairo-path-fixed.cpp                \
 	       cairo/src/cairo-path-in-fill.c                \
 	       cairo/src/cairo-path-stroke-boxes.c           \
 	       cairo/src/cairo-path-stroke-polygon.c         \
@@ -67,7 +67,7 @@ LIBCAIRO_SRC = \
 	       cairo/src/cairo-path.c                        \
 	       cairo/src/cairo-pattern.c                     \
 	       cairo/src/cairo-pen.c                         \
-	       cairo/src/cairo-png.c                         \
+	       cairo/src/cairo-png.cpp                       \
 	       cairo/src/cairo-polygon-intersect.c           \
 	       cairo/src/cairo-polygon-reduce.c              \
 	       cairo/src/cairo-polygon.c                     \
@@ -93,7 +93,7 @@ LIBCAIRO_SRC = \
 	       cairo/src/cairo-surface-snapshot.c            \
 	       cairo/src/cairo-surface-subsurface.c          \
 	       cairo/src/cairo-surface-wrapper.c             \
-	       cairo/src/cairo-surface.c                     \
+	       cairo/src/cairo-surface.cpp                   \
 	       cairo/src/cairo-tee-surface.c                 \
 	       cairo/src/cairo-time.c                        \
 	       cairo/src/cairo-tor-scan-converter.c          \

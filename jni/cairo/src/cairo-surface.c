@@ -152,8 +152,8 @@ static DEFINE_NIL_SURFACE(CAIRO_STATUS_INVALID_SIZE, _cairo_surface_nil_invalid_
 static DEFINE_NIL_SURFACE(CAIRO_STATUS_DEVICE_TYPE_MISMATCH, _cairo_surface_nil_device_type_mismatch);
 static DEFINE_NIL_SURFACE(CAIRO_STATUS_DEVICE_ERROR, _cairo_surface_nil_device_error);
 
-static DEFINE_NIL_SURFACE(CAIRO_INT_STATUS_UNSUPPORTED, _cairo_surface_nil_unsupported);
-static DEFINE_NIL_SURFACE(CAIRO_INT_STATUS_NOTHING_TO_DO, _cairo_surface_nil_nothing_to_do);
+static DEFINE_NIL_SURFACE((cairo_status_t)CAIRO_INT_STATUS_UNSUPPORTED, _cairo_surface_nil_unsupported);
+static DEFINE_NIL_SURFACE((cairo_status_t)CAIRO_INT_STATUS_NOTHING_TO_DO, _cairo_surface_nil_nothing_to_do);
 
 static void _cairo_surface_finish (cairo_surface_t *surface);
 
@@ -195,7 +195,7 @@ _cairo_surface_set_error (cairo_surface_t *surface,
      * error, which is the most significant. */
     _cairo_status_set_error (&surface->status, (cairo_status_t)status);
 
-    return _cairo_error (status);
+    return (cairo_int_status_t)_cairo_error ((cairo_status_t)status);
 }
 
 /**
@@ -701,7 +701,7 @@ void
 cairo_surface_unmap_image (cairo_surface_t *surface,
 			   cairo_surface_t *image)
 {
-    cairo_int_status_t status;
+    cairo_status_t status;
 
     if (unlikely (surface->status)) {
 	status = surface->status;
@@ -2269,7 +2269,7 @@ _cairo_surface_show_text_glyphs (cairo_surface_t	    *surface,
 				 cairo_scaled_font_t	    *scaled_font,
 				 const cairo_clip_t		*clip)
 {
-    cairo_int_status_t status;
+    cairo_status_t status;
     cairo_scaled_font_t *dev_scaled_font = scaled_font;
 
     TRACE ((stderr, "%s\n", __FUNCTION__));
@@ -2308,9 +2308,9 @@ _cairo_surface_show_text_glyphs (cairo_surface_t	    *surface,
     }
     status = cairo_scaled_font_status (dev_scaled_font);
     if (unlikely (status))
-	return _cairo_surface_set_error (surface, status);
+    	return _cairo_surface_set_error (surface, status);
 
-    status = CAIRO_INT_STATUS_UNSUPPORTED;
+    status = (cair_status_t)CAIRO_INT_STATUS_UNSUPPORTED;
 
     /* The logic here is duplicated in _cairo_analysis_surface show_glyphs and
      * show_text_glyphs.  Keep in synch. */
@@ -2370,7 +2370,7 @@ _cairo_surface_show_text_glyphs (cairo_surface_t	    *surface,
 	surface->serial++;
     }
 
-    return _cairo_surface_set_error (surface, status);
+    return _cairo_surface_set_error (surface, -fpermissivestatus);
 }
 
 /**
@@ -2465,7 +2465,7 @@ cairo_surface_t *
 _cairo_int_surface_create_in_error (cairo_int_status_t status)
 {
     if (status < CAIRO_INT_STATUS_LAST_STATUS)
-	return _cairo_surface_create_in_error (status);
+	return _cairo_surface_create_in_error ((cairo_status_t)status);
 
     switch ((int)status) {
     case CAIRO_INT_STATUS_UNSUPPORTED:
