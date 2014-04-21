@@ -74,11 +74,11 @@
  * Since: 1.0
  **/
 
-struct png_read_closure_t {
+typedef struct png_read_closure_t {
     cairo_read_func_t		 read_func;
     void			*closure;
     cairo_output_stream_t	*png_data;
-};
+} png_read_closure_t;
 
 
 /* Unpremultiplies data and converts native endian ARGB => RGBA bytes */
@@ -384,10 +384,10 @@ cairo_surface_write_to_png (cairo_surface_t	*surface,
     return status;
 }
 
-struct png_write_closure_t {
+typedef struct png_write_closure_t {
     cairo_write_func_t		 write_func;
     void			*closure;
-};
+} png_write_closure_t;
 
 static void
 stream_write_func (png_structp png, png_bytep data, png_size_t size)

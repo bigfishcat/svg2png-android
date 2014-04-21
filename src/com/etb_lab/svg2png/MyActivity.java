@@ -2,9 +2,6 @@ package com.etb_lab.svg2png;
 
 import android.app.Activity;
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Display;
 import android.widget.ImageView;

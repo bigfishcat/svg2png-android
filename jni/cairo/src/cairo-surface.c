@@ -2310,7 +2310,7 @@ _cairo_surface_show_text_glyphs (cairo_surface_t	    *surface,
     if (unlikely (status))
     	return _cairo_surface_set_error (surface, status);
 
-    status = (cair_status_t)CAIRO_INT_STATUS_UNSUPPORTED;
+    status = (cairo_status_t)CAIRO_INT_STATUS_UNSUPPORTED;
 
     /* The logic here is duplicated in _cairo_analysis_surface show_glyphs and
      * show_text_glyphs.  Keep in synch. */
@@ -2370,7 +2370,7 @@ _cairo_surface_show_text_glyphs (cairo_surface_t	    *surface,
 	surface->serial++;
     }
 
-    return _cairo_surface_set_error (surface, -fpermissivestatus);
+    return _cairo_surface_set_error (surface, status);
 }
 
 /**
