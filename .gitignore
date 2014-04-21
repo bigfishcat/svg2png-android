@@ -1,0 +1,6 @@
+bin/*
+gen/*
+obj/*
+local.properties
+libs/armeabi/libsvg2png.so
+libs/armeabi-v7a/libsvg2png.so
